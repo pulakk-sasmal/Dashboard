@@ -5,7 +5,14 @@ import Dashboard from './db/model.js';
 import router from './router/router.js';
 
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = 4000;
+
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://chartvisuals.netlify.app/');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
 
 connection();
 
