@@ -7,16 +7,26 @@ import router from './router/router.js';
 const app = express();
 const PORT = 4000;
 
+// Set CORS headers
+app.use(cors());
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'https://chartvisuals.netlify.app/');
+  res.setHeader('Access-Control-Allow-Origin', 'https://chartvisuals.netlify.app');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   next();
 });
 
+// Serve static files with proper MIME type
+app.use(express.static('public', {
+  setHeaders: (res, path, stat) => {
+    if (path.endsWith('.js')) {
+      res.setHeader('Content-Type', 'application/javascript');
+    }
+  }
+}));
+
 connection();
 
-app.use(cors());
 app.use(express.json());
 
 app.use('/dashboard', router);
