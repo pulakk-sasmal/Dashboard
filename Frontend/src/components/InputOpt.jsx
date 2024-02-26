@@ -10,7 +10,7 @@ function InputFilter({ variable, setFunction }) {
     useEffect(() => {
         const fetchCountrySuggestions = async () => {
             try {
-                const response = await fetch(`http://localhost:4000/suggestion/${variable}`);
+                const response = await fetch(`https://dashboard-7fo2.onrender.com/suggestion/${variable}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch suggestions');
                 }
