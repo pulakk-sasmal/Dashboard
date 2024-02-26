@@ -8,7 +8,7 @@ function Visual({eff}) {
 
     const solve = async () => {
         const item = mbttn;
-        const apiUrl = 'http://localhost:4000/dashboard/visual';
+        const apiUrl = 'https://dashboard-7fo2.onrender.com/dashboard/visual';
         const data = {
             visual : `${item}`,
             filter : eff,
